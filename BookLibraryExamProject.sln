@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookLibraryExamProject", "BookLibraryExamProject\BookLibraryExamProject.csproj", "{338D8446-9DCD-486A-AC41-D777C7563DD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{3F31814E-D162-49EB-B3D3-20A3B1A48E7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{CE6F5B78-4AA4-4952-B220-116485443A2B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{338D8446-9DCD-486A-AC41-D777C7563DD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{338D8446-9DCD-486A-AC41-D777C7563DD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{338D8446-9DCD-486A-AC41-D777C7563DD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{338D8446-9DCD-486A-AC41-D777C7563DD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F31814E-D162-49EB-B3D3-20A3B1A48E7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F31814E-D162-49EB-B3D3-20A3B1A48E7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F31814E-D162-49EB-B3D3-20A3B1A48E7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F31814E-D162-49EB-B3D3-20A3B1A48E7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE6F5B78-4AA4-4952-B220-116485443A2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE6F5B78-4AA4-4952-B220-116485443A2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE6F5B78-4AA4-4952-B220-116485443A2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE6F5B78-4AA4-4952-B220-116485443A2B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {820CABBB-270F-41E5-8D0F-EC950DDC2245}
+	EndGlobalSection
+EndGlobal

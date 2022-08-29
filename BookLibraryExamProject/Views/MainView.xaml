@@ -1,0 +1,243 @@
+﻿<Window x:Class="BookLibraryExamProject.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BookLibraryExamProject.Views"
+        xmlns:viewModel="clr-namespace:BookLibraryExamProject.ViewModels"
+        xmlns:ctls="clr-namespace:BookLibraryExamProject.CustomControls"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:cmd ="http://www.galasoft.ch/mvvmlight"
+        mc:Ignorable="d" Name="home"
+        Title="MainWindow" Height="650" Width="1000"
+        WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Background="Transparent" AllowsTransparency="True"
+        ResizeMode="NoResize" FontFamily="Poppins"
+        MouseDown="MoveWindow"
+        Icon="/Images/logo.png">
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+    <Border Background="{DynamicResource PrimaryBackgroundColor}"
+            CornerRadius="8">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!--#region Left Menu-->
+            <Border Grid.Column="0"
+                    Background="{DynamicResource SecundaryBackgroundColor}"
+                    CornerRadius="8 0 0 8">
+                <Grid x:Name="GridNav" Width="60">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <!--#region Logo and Login-->
+                    <Grid Grid.Row="0">
+                        <Border 
+                              Margin="14 0 0 0"
+                              Width="32" Height="24"
+                              HorizontalAlignment="Left">
+                            <Border.Background>
+                                <ImageBrush ImageSource="/Images/logo.png" Stretch="Uniform"/>
+                            </Border.Background>
+                        </Border>
+
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="60 0 0 0">
+                            <Label Content="{Binding CurrentUser.Login}"
+                               Foreground="{DynamicResource PrimaryTextColor}"
+                                   FontFamily="/Fonts/#Montserrat"
+                               FontWeight="Bold"
+                               FontSize="16"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </Grid>
+                    <!--#endregion-->
+                    <!--#region Menu-->
+                    <StackPanel Grid.Row="1" Margin="-1 40 0 20">
+                        <Button x:Name="btnBooks" Style="{DynamicResource PopupButtonStyle}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding Mode=OneWay, Path=BooksPageClickCommand}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseEnter">
+                                    <i:InvokeCommandAction Command="{Binding Mode=OneWay, Path=BooksMouseEnterCommand}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseLeave">
+                                    <i:InvokeCommandAction Command="{Binding Mode=OneWay, Path=BooksMouseLeaveCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <ctls:MenuItem FontFamily="/Fonts/#Montserrat" GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource books}" IconWidth="16" Text="Books" VerticalAlignment="Center"/>
+                        </Button>
+                        <Button x:Name="btnAuthors" Style="{DynamicResource PopupButtonStyle}" Visibility="{Binding IsAdmin}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding Mode=OneWay, Path=AuthorsPageClickCommand}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseEnter">
+                                    <i:InvokeCommandAction Command="{Binding Mode=OneWay, Path=AuthorsMouseEnterCommand}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseLeave">
+                                    <i:InvokeCommandAction Command="{Binding Mode=OneWay, Path=AuthorsMouseLeaveCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <ctls:MenuItem FontFamily="/Fonts/#Montserrat" GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource authors}" IconWidth="16" Text="Authors" VerticalAlignment="Center"/>
+                        </Button>
+                        <Button Visibility="{Binding IsAdmin}" x:Name="btnPublishers" Style="{DynamicResource PopupButtonStyle}" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding Mode=OneWay, Path=PublishersPageClickCommand}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseEnter">
+                                    <i:InvokeCommandAction Command="{Binding Mode=OneWay, Path=PublishersMouseEnterCommand}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseLeave">
+                                    <i:InvokeCommandAction Command="{Binding Mode=OneWay, Path=PublishersMouseLeaveCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <ctls:MenuItem FontFamily="/Fonts/#Montserrat" GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource authors}" IconWidth="16" Text="Publishers" VerticalAlignment="Center"/>
+                        </Button>
+                        <Button Visibility="{Binding IsAdmin}" x:Name="btnActions" Style="{DynamicResource PopupButtonStyle}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding Mode=OneWay, Path=ActionsPageClickCommand}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseEnter">
+                                    <i:InvokeCommandAction Command="{Binding Mode=OneWay, Path=ActionsMouseEnterCommand}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseLeave">
+                                    <i:InvokeCommandAction Command="{Binding Mode=OneWay, Path=ActionsMouseLeaveCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <ctls:MenuItem FontFamily="/Fonts/#Montserrat" GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource actions}" IconWidth="16" Text="Actions" VerticalAlignment="Center"/>
+                        </Button>
+                        <Button Visibility="{Binding IsAdmin}" x:Name="btnUsers" Style="{DynamicResource PopupButtonStyle}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding Mode=OneWay, Path=UsersPageClickCommand}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseEnter">
+                                    <i:InvokeCommandAction Command="{Binding Mode=OneWay, Path=UsersMouseEnterCommand}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseLeave">
+                                    <i:InvokeCommandAction Command="{Binding Mode=OneWay, Path=UsersMouseLeaveCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <ctls:MenuItem FontFamily="/Fonts/#Montserrat" GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource users}" IconWidth="16" Text="Users" VerticalAlignment="Center"/>
+                        </Button>
+                        <Button Visibility="{Binding IsAdmin}" x:Name="btnOutstock" Style="{DynamicResource PopupButtonStyle}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding Mode=OneWay, Path=OutStockPageClickCommand}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseEnter">
+                                    <i:InvokeCommandAction Command="{Binding Mode=OneWay, Path=OutStockMouseEnterCommand}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseLeave">
+                                    <i:InvokeCommandAction Command="{Binding Mode=OneWay, Path=OutStockMouseLeaveCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <ctls:MenuItem FontFamily="/Fonts/#Montserrat" GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource bookOutstock}" IconWidth="16" Text="Out Stock" VerticalAlignment="Center"/>
+                        </Button>
+                        <Button x:Name="btnBasket" Style="{DynamicResource PopupButtonStyle}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding Mode=OneWay, Path=BasketPageClickCommand}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseEnter">
+                                    <i:InvokeCommandAction Command="{Binding Mode=OneWay, Path=BasketMouseEnterCommand}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseLeave">
+                                    <i:InvokeCommandAction Command="{Binding Mode=OneWay, Path=BasketMouseLeaveCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <ctls:MenuItem FontFamily="/Fonts/#Montserrat" GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource basket}" IconWidth="16" Text="Basket" VerticalAlignment="Center"/>
+                        </Button>
+                        <Button x:Name="btnSettings" Style="{DynamicResource PopupButtonStyle}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding Mode=OneWay, Path=SettingsPageClickCommand}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseEnter">
+                                    <i:InvokeCommandAction Command="{Binding Mode=OneWay, Path=SettingsMouseEnterCommand}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="MouseLeave">
+                                    <i:InvokeCommandAction Command="{Binding Mode=OneWay, Path=SettingsMouseLeaveCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <ctls:MenuItem FontFamily="/Fonts/#Montserrat" GroupName="MenuItem" IndicatorBrush="{DynamicResource PrimaryBlueColor}" Icon="{DynamicResource settings}" IconWidth="16" Text="Settings" VerticalAlignment="Center"/>
+                        </Button>
+                    </StackPanel>
+                    <!--#endregion-->
+                    <!--#region Popup-->
+                    <Popup x:Name="Popup"  AllowsTransparency="True"  HorizontalOffset="0" VerticalOffset="10">
+                        <ctls:UserPopup x:Name="Header" Foreground="{DynamicResource PrimaryTextColor}"/>
+                    </Popup>
+                    <!--#endregion-->
+                </Grid>
+            </Border>
+            <!--#endregion-->
+            <!--#region Main-->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!--#region Resize Menu-->
+                <ToggleButton x:Name="Tg_Btn" Grid.Column="1" VerticalAlignment="Center" Style="{DynamicResource iToggleButtonStyle}" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent" Margin="10,15,0,15" Height="30" Width="30">
+                    <ToggleButton.Triggers>
+                        <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                            <BeginStoryboard>
+                                <Storyboard x:Name="HideStackPanel">
+                                    <DoubleAnimation Storyboard.TargetName="GridNav" Storyboard.TargetProperty="Width" BeginTime="0:0:0" From="210" To="60" Duration="0:0:0.5">
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="ToggleButton.Checked">
+                            <BeginStoryboard>
+                                <Storyboard x:Name="ShowStackPanel">
+                                    <DoubleAnimation Storyboard.TargetName="GridNav" Storyboard.TargetProperty="Width" BeginTime="0:0:0" From="60" To="210" Duration="0:0:0.5">
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ToggleButton.Triggers>
+                </ToggleButton>
+                <!--#endregion-->
+                <!--#region Close & Restore & Minimize-->
+                <StackPanel Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,10,0" Height="30" Orientation="Horizontal" FlowDirection="RightToLeft" Grid.RowSpan="2">
+                    <Button x:Name="btnClose" Style="{StaticResource IconButtonsStyle}" Content="{DynamicResource close}" Click="CloseWindow" Tag="IsCloseButton"/>
+                    <Button x:Name="btnRestore" Margin="5,0" Click="RestoreWindow">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource IconButtonsStyle}">
+                                <Setter Property="Content" Value="{DynamicResource maximize}"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=home, Path=WindowState}" Value="Maximized">
+                                        <Setter Property="Content" Value="{DynamicResource restore}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button x:Name="btnMinimize" Style="{DynamicResource IconButtonsStyle}" Content="{DynamicResource minimize}" Click="MinimizeWindow"/>
+                </StackPanel>
+                <!--#endregion-->
+                <!--#region Page-->
+                <Frame Grid.Row="1"
+                       Name="fContainer"
+                       Margin="20"
+                       NavigationUIVisibility="Hidden"
+                       Content="{Binding CurrentPage}">
+
+                </Frame>
+                <!--#endregion-->
+            </Grid>
+            <!--#endregion-->
+        </Grid>
+    </Border>
+</Window>

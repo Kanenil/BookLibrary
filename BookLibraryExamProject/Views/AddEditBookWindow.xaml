@@ -1,0 +1,360 @@
+﻿<Window x:Class="BookLibraryExamProject.Views.AddEditBookWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BookLibraryExamProject.Views"
+        xmlns:viewModel="clr-namespace:BookLibraryExamProject.ViewModels"
+        mc:Ignorable="d"
+        Title="AddEditBookWindow" Height="650" Width="800"
+        WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Background="Transparent" AllowsTransparency="True"
+        ResizeMode="NoResize" FontFamily="Poppins"
+        MouseDown="MoveWindow"
+        Icon="/Images/logo.png">
+    <Window.DataContext>
+        <viewModel:BookViewModel/>
+    </Window.DataContext>
+    <Border Background="{DynamicResource PrimaryBackgroundColor}"
+            CornerRadius="20"
+            BorderBrush="{StaticResource PrimaryBlueColor}"
+            BorderThickness="2">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--#region Up Menu-->
+            <TextBlock x:Name="windowName"
+                               Foreground="DarkGray"
+                               FontSize="10"
+                               FontFamily="/Fonts/#Montserrat"
+                               Grid.Column="0"
+                               VerticalAlignment="Center"
+                               Margin="10,0,0,0"/>
+            <StackPanel Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,10,0" Height="30" Orientation="Horizontal" FlowDirection="RightToLeft" Grid.RowSpan="2">
+                <Button x:Name="btnClose" Style="{StaticResource IconButtonsStyle}" Content="{DynamicResource close}" Click="CloseWindow" Tag="IsCloseButton"/>
+            </StackPanel>
+            <!--#endregion-->
+            <!--#region Main-->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <!--#region Main Left-->
+                <StackPanel Width="290"
+                            Grid.Column="0"
+                            Orientation="Vertical">
+                    <!--#region Book Name-->
+                    <TextBlock Text="Book Name"
+                               Foreground="DarkGray"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="/Fonts/#Montserrat"                             
+                               Margin="0,65,0,0"/>
+
+                    <TextBox x:Name="txtUser"
+                             Text="{Binding BookName, UpdateSourceTrigger=PropertyChanged}"
+                             FontSize="13"
+                             FontWeight="Medium"
+                             FontFamily="/Fonts/#Montserrat"                            
+                             Foreground="White"
+                             CaretBrush="LightGray"
+                             BorderBrush="DarkGray"
+                             BorderThickness="0,0,0,2"
+                             Height="28"
+                             VerticalContentAlignment="Center"
+                             Margin="0,5,0,0"
+                             Padding="20,0,0,0">
+
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="/Images/user-icon.png"
+                                        Stretch="None"
+                                        AlignmentX="Left"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    <!--#endregion-->
+                    <!--#region Style-->
+                    <TextBlock Text="Style"
+                               Foreground="DarkGray"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="/Fonts/#Montserrat"                             
+                               Margin="0,15,0,0"/>
+
+                    <TextBox x:Name="txtName"
+                             Text="{Binding Style, UpdateSourceTrigger=PropertyChanged}"
+                             FontSize="13"
+                             FontWeight="Medium"
+                             FontFamily="/Fonts/#Montserrat"                            
+                             Foreground="White"
+                             CaretBrush="LightGray"
+                             BorderBrush="DarkGray"
+                             BorderThickness="0,0,0,2"
+                             Height="28"
+                             VerticalContentAlignment="Center"
+                             Margin="0,5,0,0"
+                             Padding="20,0,0,0">
+
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="/Images/user-icon.png"
+                                        Stretch="None"
+                                        AlignmentX="Left"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    <!--#endregion-->
+                    <!--#region Count Pages-->
+                    <TextBlock Text="Count Pages"
+                               Foreground="DarkGray"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="/Fonts/#Montserrat"                             
+                               Margin="0,15,0,0"/>
+
+                    <TextBox x:Name="txtLastName"
+                             Text="{Binding CountPage, UpdateSourceTrigger=PropertyChanged}"
+                             FontSize="13"
+                             FontWeight="Medium"
+                             FontFamily="/Fonts/#Montserrat"                            
+                             Foreground="White"
+                             CaretBrush="LightGray"
+                             BorderBrush="DarkGray"
+                             BorderThickness="0,0,0,2"
+                             Height="28"
+                             VerticalContentAlignment="Center"
+                             Margin="0,5,0,0"
+                             Padding="20,0,0,0">
+
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="/Images/user-icon.png"
+                                        Stretch="None"
+                                        AlignmentX="Left"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    <!--#endregion-->
+                    <!--#region Count-->
+                    <TextBlock Text="Count"
+                               Foreground="DarkGray"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="/Fonts/#Montserrat"                             
+                               Margin="0,15,0,0"/>
+
+                    <TextBox x:Name="txtLs"
+                             Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}"
+                             FontSize="13"
+                             FontWeight="Medium"
+                             FontFamily="/Fonts/#Montserrat"                            
+                             Foreground="White"
+                             CaretBrush="LightGray"
+                             BorderBrush="DarkGray"
+                             BorderThickness="0,0,0,2"
+                             Height="28"
+                             VerticalContentAlignment="Center"
+                             Margin="0,5,0,0"
+                             Padding="20,0,0,0">
+
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="/Images/user-icon.png"
+                                        Stretch="None"
+                                        AlignmentX="Left"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    <!--#endregion-->
+                    <!--#region Price-->
+                    <TextBlock Text="Price"
+                               Foreground="DarkGray"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="/Fonts/#Montserrat"                             
+                               Margin="0,15,0,0"/>
+
+                    <TextBox x:Name="txtLss"
+                             Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}"
+                             FontSize="13"
+                             FontWeight="Medium"
+                             FontFamily="/Fonts/#Montserrat"                            
+                             Foreground="White"
+                             CaretBrush="LightGray"
+                             BorderBrush="DarkGray"
+                             BorderThickness="0,0,0,2"
+                             Height="28"
+                             VerticalContentAlignment="Center"
+                             Margin="0,5,0,0"
+                             Padding="20,0,0,0">
+
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="/Images/user-icon.png"
+                                        Stretch="None"
+                                        AlignmentX="Left"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    <!--#endregion-->
+                    <!--#region Year-->
+                    <TextBlock Text="Year"
+                               Foreground="DarkGray"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="/Fonts/#Montserrat"                             
+                               Margin="0,15,0,0"/>
+
+                    <TextBox x:Name="txtLastName1"
+                             Text="{Binding Year, UpdateSourceTrigger=PropertyChanged}"
+                             FontSize="13"
+                             FontWeight="Medium"
+                             FontFamily="/Fonts/#Montserrat"                            
+                             Foreground="White"
+                             CaretBrush="LightGray"
+                             BorderBrush="DarkGray"
+                             BorderThickness="0,0,0,2"
+                             Height="28"
+                             VerticalContentAlignment="Center"
+                             Margin="0,5,0,0"
+                             Padding="20,0,0,0">
+
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="/Images/user-icon.png"
+                                        Stretch="None"
+                                        AlignmentX="Left"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    <!--#endregion-->
+                </StackPanel>
+                <!--#endregion-->
+                <!--#region Main Right-->
+                <StackPanel Width="290"
+                            Grid.Column="1"
+                            Orientation="Vertical">
+                    <!--#region Author Book-->
+                    <TextBlock Text="Author Book"
+                               Foreground="DarkGray"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="/Fonts/#Montserrat"                             
+                               Margin="0,15,0,0"/>
+
+                    <DataGrid Height="150"
+                         Margin="0,10"
+                         SelectionMode="Single"
+                          IsReadOnly="True"
+                         AutoGenerateColumns="False"
+                          CanUserResizeColumns="False"
+                          CanUserResizeRows="False"
+                         SelectedItem="{Binding AuthorBook}"
+                         ItemsSource="{Binding GetAuthors}"
+                          RowDetailsVisibilityMode="Collapsed">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="First Name" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <!--#endregion-->
+                    <!--#region Publisher-->
+                    <TextBlock Text="Publisher"
+                               Foreground="DarkGray"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="/Fonts/#Montserrat"                             
+                               Margin="0,15,0,0"/>
+
+                    <DataGrid Height="150"
+                         Margin="0,10"
+                         SelectionMode="Single"
+                          IsReadOnly="True"
+                         AutoGenerateColumns="False"
+                          CanUserResizeColumns="False"
+                          CanUserResizeRows="False"
+                         SelectedItem="{Binding PublisherBook}"
+                         ItemsSource="{Binding GetPublishers}"
+                          RowDetailsVisibilityMode="Collapsed">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <!--#endregion-->
+                    <!--#region Action-->
+                    <Button 
+                            BorderThickness="0"
+                            Foreground="White"
+                            FontSize="10"
+                            FontFamily="/Fonts/#Montserrat"
+                            Cursor="Hand"                           
+                            HorizontalAlignment="Left"
+                            Margin="0,13,0,0"
+                            Content="Remove Action"
+                            Command="{Binding RemoveAction}">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#462AD8"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#28AEED"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="100" Height="26"
+                                        CornerRadius="20"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <!--#endregion-->
+                </StackPanel>
+                <!--#endregion-->
+                <!--#region Message & Button-->
+                <TextBlock Text="{Binding Message}"
+                               Foreground="Green"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="/Fonts/#Montserrat"                             
+                               Margin="0,15,0,64"
+                           Width="150"
+                           VerticalAlignment="Bottom"
+                            Grid.ColumnSpan="2"/>
+                <Button x:Name="btnLogin" 
+                            BorderThickness="0"
+                            Foreground="White"
+                            FontSize="12"
+                            FontFamily="/Fonts/#Montserrat"
+                            Cursor="Hand"                           
+                            Margin="0,15,0,20"
+                        VerticalAlignment="Bottom"
+                        Grid.ColumnSpan="2">
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#462AD8"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#28AEED"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="150" Height="40"
+                                        CornerRadius="20"
+                                        Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <!--#endregion-->
+            </Grid>
+            <!--#endregion-->
+        </Grid>
+    </Border>
+</Window>
